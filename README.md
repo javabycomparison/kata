@@ -40,3 +40,13 @@ With this kata, you'll train yourself to spot problematic code and make it bette
 
 - Any other Kata or Code Retreat rules may apply.
 
+## Usage
+
+```bash
+# execute tests
+$ ./mvnw test
+# run
+$ ./mvnw exec:java
+# run with parameters
+$ ./mvnw exec:java -Dexec.args="src smry"
+```
