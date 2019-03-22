@@ -44,7 +44,7 @@ With this kata, you'll train yourself to spot problematic code and make it bette
 
 ```bash
 # download kata
-$ git clone git@github.com/javabycomparison/kata
+$ git clone git@github.com:javabycomparison/kata
 $ cd kata
 
 # execute tests
