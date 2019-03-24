@@ -2,8 +2,10 @@ package com.javabycomparison.kata.main;
 
 import com.javabycomparison.kata.analysis.ResultData;
 import com.javabycomparison.kata.analysis.ResultDataPrinter;
+import com.javabycomparison.kata.printing.CSVPrinter;
 import com.javabycomparison.kata.printing.ResultPrinter;
 import com.javabycomparison.kata.search.SearchClient;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -39,6 +41,11 @@ public class StaticAnalysis {
     ResultData[] overallResult = analyzer.run(p == null ? "./src/" : p, smry);
     if (overallResult != null) {
       ResultPrinter.printOverallResults(overallResult);
+      try {
+        new CSVPrinter("output.csv").writeCSV(overallResult);
+      } catch (IOException e) {
+        System.err.println("Something went a bit wrong");
+      }
     } else {
       System.err.println("Something went terribly wrong");
     }
@@ -93,7 +100,6 @@ public class StaticAnalysis {
       } else {
         return new ResultData[] {new ResultData()};
       }
-
     }
     System.err.println("There was a problem with the result!");
 

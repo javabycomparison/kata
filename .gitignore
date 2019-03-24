@@ -1,4 +1,7 @@
 target/
+.DS_Store
 .idea/
 *.iml
 repos/
+output.csv
+build/
