@@ -22,7 +22,7 @@ class IntegrationTests {
         "     File Name  Language  Lines of Code  Number of Comments  Number of Methods  Number of Imports\n"
             + "  Overall Java      Java             15                   4                  0                  0\n"
             + "Overall Python    Python             16                   3                  3                  0\n",
-        output.replaceAll("\\\\", "/"));
+        output.replaceAll("\\\\", "/").replaceAll("\\r\\n", "\n"));
   }
 
   @Test
@@ -36,13 +36,14 @@ class IntegrationTests {
               }
             });
     Assertions.assertEquals(
-        "Skipping directory src/main/resources/java_files.\n"
+        "Skipping directory src/main/resources/java_files."
+            + System.lineSeparator()
             + "File src/main/resources/java_files/FizzBuzz.java is a Java file. It will be analyzed.\n"
             + "src/main/resources/java_files/FizzBuzz.java\tJava\t0\t15\t4\t0\t0\n"
             + "     File Name  Language  Lines of Code  Number of Comments  Number of Methods  Number of Imports\n"
             + "  Overall Java      Java             15                   4                  0                  0\n"
             + "Overall Python    Python              0                   0                  0                  0\n",
-        output.replaceAll("\\\\", "/"));
+        output.replaceAll("\\\\", "/").replaceAll("\\r\\n", "\n"));
   }
 
   @Test
@@ -62,7 +63,7 @@ class IntegrationTests {
             + "     File Name  Language  Lines of Code  Number of Comments  Number of Methods  Number of Imports\n"
             + "  Overall Java      Java              0                   0                  0                  0\n"
             + "Overall Python    Python             16                   3                  3                  0\n",
-        output.replaceAll("\\\\", "/"));
+        output.replaceAll("\\\\", "/").replaceAll("\\r\\n", "\n"));
   }
 
   private static String capture(Runnable runnable) {
