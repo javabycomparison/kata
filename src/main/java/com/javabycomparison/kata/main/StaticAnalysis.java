@@ -6,34 +6,12 @@ import com.javabycomparison.kata.printing.CSVPrinter;
 import com.javabycomparison.kata.printing.ResultPrinter;
 import com.javabycomparison.kata.search.SearchClient;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.LinkedList;
-import java.util.List;
-import org.eclipse.jgit.api.errors.GitAPIException;
 
 public class StaticAnalysis {
 
   public static void main(String... args) {
     analyze(args.length == 0 ? null : args[0], args.length == 2 ? args[1].equals("smry") : false);
-  }
-
-  private static boolean collect() {
-    List<String> l =
-        Arrays.asList(
-            "https://github.com/simonharrer/textools.git",
-            "https://github.com/javabycomparison/samplecode.git");
-
-    l.stream()
-        .forEach(
-            repo -> {
-              try {
-                new RepositoryFetcher().loadProjectFiles(repo);
-              } catch (GitAPIException e) {
-                e.printStackTrace();
-              }
-            });
-
-    return true;
   }
 
   private static void analyze(String p, boolean smry) {
