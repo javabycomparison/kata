@@ -30,13 +30,7 @@ class JavaAnalyzerTests {
   @Test
   void analyzeJavaFizzBuzz() throws IOException {
     Assertions.assertEquals(
-        new ResultData(
-            0,
-            "./src/main/resources/java_files/FizzBuzz.java".replaceAll("\\\\", "/"),
-            15,
-            4,
-            0,
-            0),
+        new ResultData(0, "./src/main/resources/java_files/FizzBuzz.java", 15, 4, 0, 0),
         new JavaAnalyzer(Paths.get("./src/main/resources/java_files/FizzBuzz.java")).analyze());
   }
 }

@@ -20,13 +20,7 @@ class PythonAnalyzerTests {
   void analyzePythonFile() {
     Assertions.assertEquals(
         pythonResult,
-        new ResultData(
-            1,
-            "./src/main/resources/python_files/function.py".replaceAll("\\\\", "/"),
-            16,
-            3,
-            3,
-            0));
+        new ResultData(1, "./src/main/resources/python_files/function.py", 16, 3, 3, 0));
   }
 
   @Test
