@@ -56,8 +56,8 @@ class IntegrationTests {
               }
             });
     Assertions.assertEquals(
-        "File src/main/resources/python_files/function.py is a Python file. It will be analyzed.\n"
-            + "Skipping directory src/main/resources/python_files.\n"
+        "Skipping directory src/main/resources/python_files.\n"
+            + "File src/main/resources/python_files/function.py is a Python file. It will be analyzed.\n"
             + "src/main/resources/python_files/function.py\tPython\t0\t16\t3\t3\t0\n"
             + "     File Name  Language  Lines of Code  Number of Comments  Number of Methods  Number of Imports\n"
             + "  Overall Java      Java              0                   0                  0                  0\n"

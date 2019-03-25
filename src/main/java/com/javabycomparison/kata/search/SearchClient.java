@@ -33,7 +33,8 @@ public class SearchClient {
                       return false;
                     }
                   })
-              .collect(Collectors.toSet())) {
+              .sorted()
+              .collect(Collectors.toList())) {
         if (isJavaFile(file)) {
           if (!smry) {
             System.out.println("File " + file.toString() + " is a Java file. It will be analyzed.");
