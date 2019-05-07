@@ -1,12 +1,14 @@
 package com.javabycomparison.kata.analysis;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
 import java.nio.file.Paths;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class JavaAnalyzerTests {
 
@@ -20,11 +22,8 @@ class JavaAnalyzerTests {
   @Test
   void analyzeShouldThrowIOException() {
     JavaAnalyzer javaAnalyzer = new JavaAnalyzer(Paths.get("./XXX_unavailable_directory/"));
-    try {
-      javaAnalyzer.analyze();
-    } catch (IOException ioe) {
 
-    }
+    assertThrows(IOException.class, javaAnalyzer::analyze);
   }
 
   @Test
