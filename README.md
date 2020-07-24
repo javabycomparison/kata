@@ -1,3 +1,10 @@
+# Fork Edit
+This fork is for use to practice mobbing, refactoring, retrospection, etc.
+For the sake of this learning, we have chosen to ignore the house rules, the book, as well as its recommended refactorings checklist.
+
+
+
+
 # Java by Comparison Kata
 
 The [Java by Comparison Kata](https://github.com/javabycomparison/kata) requires you to have a copy of [Java by Comparison](https://java.by-comparison.com) because you need to apply the refactorings from the book.
