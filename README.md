@@ -2,6 +2,8 @@
 This fork is for use to practice mobbing, refactoring, retrospection, etc.
 For the sake of this learning, we have chosen to ignore the house rules, the book, as well as its recommended refactorings checklist.
 
+We are the following participants: Raymond Tran, Stacy Price, and Brian Cai
+
 
 
 
