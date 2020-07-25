@@ -17,10 +17,10 @@ public class SearchClient {
   //Stacy is here!
   // bun is here.
 
-  private boolean summary;
+  private boolean isNotDebug;
 
-  public SearchClient(boolean summary) {
-    this.summary = summary;
+  public SearchClient(boolean isNotDebug) {
+    this.isNotDebug = isNotDebug;
   }
 
   public LinkedList<ResultData> collectAllFiles(String directoryPath) {
@@ -40,27 +40,25 @@ public class SearchClient {
               .sorted()
               .collect(Collectors.toList())) {
         if (isJavaFile(file)) {
-          if (!summary) {
+          if (!isNotDebug) {
             System.out.println("File " + file.toString() + " is a Java file. It will be analyzed.");
           }
           ResultData resultData = new JavaAnalyzer(file).analyze();
           resultsList.add(resultData);
         } else if (isPythonFile(file)) {
-          if (!summary) {
-            System.out.println(
-                "File " + file.toString() + " is a Python file. It will be analyzed.");
+          if (!isNotDebug) {
+            System.out.println("File " + file.toString() + " is a Python file. It will be analyzed.");
           }
           final ResultData resultData = new PythonAnalyzer(file).analyze();
           resultsList.add(resultData);
         } else {
           if (!Files.isDirectory(file)) {
-            if (!summary) {
-              System.out.println(
-                  "File " + file.toString() + " is neither a Java file nor a Python file.");
+            if (!isNotDebug) {
+              System.out.println("File " + file.toString() + " is neither a Java file nor a Python file.");
             }
             resultsList.add(new AnalyzerImpl(file).analyze());
           } else {
-            if (!summary) {
+            if (!isNotDebug) {
               System.out.println("Skipping directory " + file + ".");
             }
           }
