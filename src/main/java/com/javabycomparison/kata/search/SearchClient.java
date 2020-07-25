@@ -72,17 +72,10 @@ public class SearchClient {
   }
 
   private boolean isJavaFile(Path file) {
-    if (file.toString().matches(".*\\.java")) {
-      return true;
-    } else {
-      return false;
-    }
+    return file.toString().matches(".*\\.java");
   }
 
   private boolean isPythonFile(Path file) {
-    if (file.getFileName().toString().matches(".*\\.py")) {
-      return true;
-    }
-    return false;
+    return file.getFileName().toString().matches(".*\\.py");
   }
 }
