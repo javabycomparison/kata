@@ -32,15 +32,13 @@ public class SearchClient {
           if (isDebug) {
             System.out.println("File " + file.toString() + " is a Java file. It will be analyzed.");
           }
-          ResultData resultData = new JavaAnalyzer(file).analyze();
-          resultsList.add(resultData);
+          resultsList.add(new JavaAnalyzer(file).analyze());
 
         } else if (isPythonFile(file)) {
           if (isDebug) {
             System.out.println("File " + file.toString() + " is a Python file. It will be analyzed.");
           }
-          final ResultData resultData = new PythonAnalyzer(file).analyze();
-          resultsList.add(resultData);
+          resultsList.add(new PythonAnalyzer(file).analyze());
 
         } else {
           if (!Files.isDirectory(file)) {
