@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class SearchClient {
@@ -26,19 +27,7 @@ public class SearchClient {
   public LinkedList<ResultData> collectAllFiles(String directoryPath) {
     LinkedList<ResultData> resultsList = new LinkedList<>();
     try {
-      for (Path file :
-          Files.walk(Paths.get(directoryPath))
-              .filter(path -> !path.toString().contains(".git"))
-              .filter(
-                  path -> {
-                    try {
-                      return !Files.isHidden(path);
-                    } catch (IOException e) {
-                      return false;
-                    }
-                  })
-              .sorted()
-              .collect(Collectors.toList())) {
+      for (Path file : getCollectedFile(directoryPath)) {
         if (isJavaFile(file)) {
           if (!isNotDebug) {
             System.out.println("File " + file.toString() + " is a Java file. It will be analyzed.");
@@ -69,6 +58,21 @@ public class SearchClient {
       return null;
     }
     return resultsList;
+  }
+
+  private List<Path> getCollectedFile(String directoryPath) throws IOException {
+    return Files.walk(Paths.get(directoryPath))
+        .filter(path -> !path.toString().contains(".git"))
+        .filter(
+            path -> {
+              try {
+                return !Files.isHidden(path);
+              } catch (IOException e) {
+                return false;
+              }
+            })
+        .sorted()
+        .collect(Collectors.toList());
   }
 
   private boolean isJavaFile(Path file) {
