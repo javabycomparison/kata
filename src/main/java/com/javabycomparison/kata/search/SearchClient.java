@@ -27,7 +27,7 @@ public class SearchClient {
   public LinkedList<ResultData> collectAllFiles(String directoryPath) {
     LinkedList<ResultData> resultsList = new LinkedList<>();
     try {
-      for (Path file : getCollectedFile(directoryPath)) {
+      for (Path file : getSortedListOfFiles(directoryPath)) {
         if (isJavaFile(file)) {
           if (!isNotDebug) {
             System.out.println("File " + file.toString() + " is a Java file. It will be analyzed.");
@@ -60,7 +60,7 @@ public class SearchClient {
     return resultsList;
   }
 
-  private List<Path> getCollectedFile(String directoryPath) throws IOException {
+  private List<Path> getSortedListOfFiles(String directoryPath) throws IOException {
     return Files.walk(Paths.get(directoryPath))
         .filter(path -> !path.toString().contains(".git"))
         .filter(
