@@ -11,14 +11,14 @@ import org.junit.jupiter.api.Test;
 class JavaAnalyzerTests {
 
   @Test
-  void analyze() throws IOException {
+  void analyze_analyzerWithNoFile_shouldNotAnalyze() throws IOException {
     JavaAnalyzer javaAnalyzer = new JavaAnalyzer(null);
     assertNotNull(javaAnalyzer);
     assertNull(javaAnalyzer.analyze());
   }
 
   @Test
-  void analyzeShouldThrowIOException() {
+  void analyze_analyzerWithUnavailableDirectory_shouldNotAnalyze() {
     JavaAnalyzer javaAnalyzer = new JavaAnalyzer(Paths.get("./XXX_unavailable_directory/"));
     try {
       javaAnalyzer.analyze();
@@ -28,9 +28,9 @@ class JavaAnalyzerTests {
   }
 
   @Test
-  void analyzeJavaFizzBuzz() throws IOException {
-    Assertions.assertEquals(
-        new ResultData(0, "./src/main/resources/java_files/FizzBuzz.java", 15, 4, 0, 0),
-        new JavaAnalyzer(Paths.get("./src/main/resources/java_files/FizzBuzz.java")).analyze());
+  void analyze_analyzerWithCorrectFile_shouldAnalyze() throws IOException {
+    ResultData correctResultData = new ResultData(0, "./src/main/resources/java_files/FizzBuzz.java", 15, 4, 0, 0);
+    ResultData actualResultData = new JavaAnalyzer(Paths.get("./src/main/resources/java_files/FizzBuzz.java")).analyze();
+    Assertions.assertEquals(correctResultData, actualResultData);
   }
 }

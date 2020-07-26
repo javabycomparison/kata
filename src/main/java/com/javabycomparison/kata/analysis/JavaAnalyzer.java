@@ -17,30 +17,34 @@ public class JavaAnalyzer implements Analyzer {
   public ResultData analyze() throws IOException {
     if (file != null) {
       int imports = 0;
-      int LoC = 0;
-      int commentsLoC = 0;
+      int amountOfLines = 0;
+      int amountOfLinesWithComments = 0;
 
       try {
         BufferedReader reader = Files.newBufferedReader(this.file);
 
         String line;
         while ((line = reader.readLine()) != null) {
-          LoC += 1;
+          amountOfLines++;
           if (line.trim().startsWith("import")) {
-            imports += 1;
-          } else if (line.trim().startsWith("//")
-              || line.trim().startsWith("*")
-              || line.trim().startsWith("/*")) {
-            commentsLoC += 1;
+            imports++;
+          } else if (isAComment(line)) {
+            amountOfLinesWithComments++;
           }
         }
         // It is impossible to detect the number of methods at the moment.
-        return new ResultData(0, this.file.toString(), LoC, commentsLoC, 0, imports);
+        return new ResultData(0, this.file.toString(), amountOfLines, amountOfLinesWithComments, 0, imports);
       } catch (IOException ioe) {
         throw new IOException("There was a problem reading a file!");
       }
     } else {
       return null;
     }
+  }
+
+  private boolean isAComment(String line) {
+    return line.trim().startsWith("//")
+        || line.trim().startsWith("*")
+        || line.trim().startsWith("/*");
   }
 }
