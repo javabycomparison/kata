@@ -2,10 +2,15 @@
 This fork is for use to practice mobbing, refactoring, retrospection, etc.
 For the sake of this learning, we have chosen to ignore the house rules, the book, as well as its recommended refactorings checklist.
 
+Instead, we practice:
+* Remote rotational mobbing at a mobodoro frequency. (25 minute workchunks, with ~5 minute rotations within. We followed each workchunk with 5 minute breaks.)
+* Refactoring followed basic, safe refactoring available to the IntelliJ IDE. Mostly basic refactorings as described in Martin Fowler's "Refactoring" book.
+* A basic retrospectation that asked: How are you feeling? What did we succeed at? What could we have done better?
+
 We are the following participants: Raymond Tran, Stacy Price, and Brian Cai
 
-
-
+<br>
+<br>
 
 # Java by Comparison Kata
 
